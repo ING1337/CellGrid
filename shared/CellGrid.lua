@@ -12,7 +12,7 @@ end
 
 -- #################################################################################################################################
 
-function CellGrid:AddObject(object, pos, radius)
+function CellGrid:AddEntity(entity, pos, radius)
 	range = radius and (math.ceil(radius / self.size)) or 0
 	x = math.max(1, math.floor((pos.x - self.offsetX) / self.size - range))
 	y = math.max(1, math.floor((pos.z - self.offsetY) / self.size - range))
@@ -21,12 +21,12 @@ function CellGrid:AddObject(object, pos, radius)
 		if self.grid[i] == nil then self.grid[i] = {} end
 		for j = y, range * 2 + y, 1 do
 			if self.grid[i][j] == nil then self.grid[i][j] = {} end
-			table.insert(self.grid[i][j], object)
+			table.insert(self.grid[i][j], entity)
 		end
 	end
 end
 
-function CellGrid:RemoveObject(object, pos, radius)
+function CellGrid:RemoveEntity(entity, pos, radius)
 	range = radius and (math.ceil(radius / self.size)) or 0
 	x = math.max(1, math.floor((pos.x - self.offsetX) / self.size - range))
 	y = math.max(1, math.floor((pos.z - self.offsetY) / self.size - range))
@@ -34,7 +34,7 @@ function CellGrid:RemoveObject(object, pos, radius)
 	for i = x, range * 2 + x, 1 do
 		for j = y, range * 2 + y, 1 do
 			for k, comp in ipairs(self.grid[i][j]) do
-				if comp == object then
+				if comp == entity then
 					table.remove(self.grid[i][j], k)
 					break
 				end
