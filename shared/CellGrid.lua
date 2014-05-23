@@ -1,4 +1,4 @@
--- CellGrid by ING
+-- LUA CellGrid by ING
 -- allows massive 3d entity management
 
 class 'CellGrid'
