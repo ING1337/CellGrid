@@ -43,6 +43,8 @@ function CellGrid:RemoveEntity(entity, position, radius)
 	end
 end
 
+-- #################################################################################################################################
+
 function CellGrid:GetCell(position)
 	x = math.max(1, math.floor((position.x - self.offsetX) / self.size))
 	y = math.max(1, math.floor((position.z - self.offsetY) / self.size))
