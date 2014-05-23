@@ -5,9 +5,9 @@ class 'CellGrid'
 
 function CellGrid:__init(cellSize, offsetX, offsetY)
 	self.grid      = {}
-	self.size      = cellSize
-	self.offsetX   = offsetX
-	self.offsetY   = offsetY
+	self.size      = cellSize or 100
+	self.offsetX   = offsetX or -15000
+	self.offsetY   = offsetY or -15000
 end
 
 -- #################################################################################################################################
