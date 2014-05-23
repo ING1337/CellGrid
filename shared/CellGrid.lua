@@ -12,10 +12,10 @@ end
 
 -- #################################################################################################################################
 
-function CellGrid:AddEntity(entity, pos, radius)
+function CellGrid:AddEntity(entity, position, radius)
 	range = radius and (math.ceil(radius / self.size)) or 0
-	x = math.max(1, math.floor((pos.x - self.offsetX) / self.size - range))
-	y = math.max(1, math.floor((pos.z - self.offsetY) / self.size - range))
+	x = math.max(1, math.floor((position.x - self.offsetX) / self.size - range))
+	y = math.max(1, math.floor((position.z - self.offsetY) / self.size - range))
 	
 	for i = x, range * 2 + x, 1 do
 		if self.grid[i] == nil then self.grid[i] = {} end
@@ -26,10 +26,10 @@ function CellGrid:AddEntity(entity, pos, radius)
 	end
 end
 
-function CellGrid:RemoveEntity(entity, pos, radius)
+function CellGrid:RemoveEntity(entity, position, radius)
 	range = radius and (math.ceil(radius / self.size)) or 0
-	x = math.max(1, math.floor((pos.x - self.offsetX) / self.size - range))
-	y = math.max(1, math.floor((pos.z - self.offsetY) / self.size - range))
+	x = math.max(1, math.floor((position.x - self.offsetX) / self.size - range))
+	y = math.max(1, math.floor((position.z - self.offsetY) / self.size - range))
 	
 	for i = x, range * 2 + x, 1 do
 		for j = y, range * 2 + y, 1 do
@@ -43,9 +43,9 @@ function CellGrid:RemoveEntity(entity, pos, radius)
 	end
 end
 
-function CellGrid:GetCell(pos)
-	x = math.max(1, math.floor((pos.x - self.offsetX) / self.size))
-	y = math.max(1, math.floor((pos.z - self.offsetY) / self.size))
+function CellGrid:GetCell(position)
+	x = math.max(1, math.floor((position.x - self.offsetX) / self.size))
+	y = math.max(1, math.floor((position.z - self.offsetY) / self.size))
 	
 	if not self.grid[x] then return nil end
 	return self.grid[x][y]
